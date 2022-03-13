@@ -74,11 +74,11 @@ export async function getStaticPaths() {
 
   const contract = new ethers.Contract(contractAddress, Blog.abi, provider)
   const data = await contract.fetchPosts()
-
+console.log('data',data)
   /* then we map over the posts and create a params object passing */
   /* the id property to getStaticProps which will run for ever post */
   /* in the array and generate a new page */
-  const paths = data.map(d => ({ params: { id: d[2] } }))
+  const paths = data.map(d => ({ params: { id: d.content } }))
 
   return {
     paths,
