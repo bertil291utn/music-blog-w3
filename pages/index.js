@@ -37,7 +37,7 @@ export default function Home(props) {
                   <p className={postTitle}>{post[1]}</p>
                   <div className={arrowContainer}>
                   <img
-                      src='/right-arrow.svg'
+                      src='/assets/right-arrow.svg'
                       alt='Right arrow'
                       className={smallArrow}
                     />
@@ -56,7 +56,7 @@ export default function Home(props) {
             <button className={buttonStyle} onClick={navigate}>
               Create your first post
               <img
-                src='/right-arrow.svg'
+                src='/assets/right-arrow.svg'
                 alt='Right arrow'
                 className={arrow}
               />
@@ -75,13 +75,14 @@ export async function getServerSideProps() {
   if (process.env.ENVIRONMENT === 'local') {
     provider = new ethers.providers.JsonRpcProvider()
   } else if (process.env.ENVIRONMENT === 'testnet') {
-    provider = new ethers.providers.JsonRpcProvider('https://rpc-mumbai.matic.today')
+    provider = new ethers.providers.JsonRpcProvider('https://matic-mumbai.chainstacklabs.com')
   } else {
     provider = new ethers.providers.JsonRpcProvider('https://polygon-rpc.com/')
   }
 
   const contract = new ethers.Contract(contractAddress, Blog.abi, provider)
   const data = await contract.fetchPosts()
+
   return {
     props: {
       posts: JSON.parse(JSON.stringify(data))

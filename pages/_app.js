@@ -1,5 +1,4 @@
 /* pages/__app.js */
-import '../styles/globals.css'
 import { useState } from 'react'
 import Link from 'next/link'
 import { css } from '@emotion/css'
@@ -9,6 +8,7 @@ import WalletConnectProvider from '@walletconnect/web3-provider'
 import { AccountContext } from '../context.js'
 import { ownerAddress } from '../config'
 import 'easymde/dist/easymde.min.css'
+import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   /* create local state to save account information after signin */
@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }) {
           <Link href="/">
             <a>
               <img
-                src='/logo.svg'
+                src='/assets/logo.svg'
                 alt="React Logo"
                 style={{ width: '50px' }}
               />
