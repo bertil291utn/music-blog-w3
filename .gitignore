@@ -41,3 +41,5 @@ typechain
 
 #Hardhat files
 cache
+
+blogcms/node_modules
